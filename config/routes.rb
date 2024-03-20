@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get '/Products/show', to:'products#show'
   get '/Categories/index', to:'categories#index'
   get '/Categories/list', to:'categories#list'
-  get '/Search/result', to:'search#index'
+  get '/Search/result', to:'search#index
 end
