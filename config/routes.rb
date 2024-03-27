@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'cart/add_to_cart'
+  get 'cart/remove_from_cart'
+  get 'cart/update_cart'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'search/index'
@@ -6,6 +9,9 @@ Rails.application.routes.draw do
   get 'categories/list'
   get 'products/index'
   get 'products/show'
+  get 'products/cart'
+  post 'carts/add_item'
+  post 'carts/remove_item'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -17,7 +23,16 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/Products/index', to:'products#index'
   get '/Products/show', to:'products#show'
+  get '/Products/cart', to:'cart#show'
+  get '/Products/cartRemove', to:'products#cartRemove'
   get '/Categories/index', to:'categories#index'
   get '/Categories/list', to:'categories#list'
   get '/Search/result', to:'search#index'
+
+    # post '/add_to_cart', to: 'cart#add_to_cart'
+    get '/view_cart', to: 'cart#view_cart'
+    delete '/remove_from_cart/:id', to: 'cart#remove_from_cart', as: 'remove_from_cart'
+    post '/add_to_cart', to: 'cart#add_to_cart', as: 'add_to_cart'
+    patch '/update_cart/:id', to: 'cart#update_cart', as: 'update_cart'
+   
 end

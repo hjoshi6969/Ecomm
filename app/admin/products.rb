@@ -30,3 +30,4 @@ ActiveAdmin.register Product do
     f.actions
   end
 end
+

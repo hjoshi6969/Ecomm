@@ -13,7 +13,7 @@
                         <!-- Add more product details as needed -->
                         <div class="mt-auto">
                             <a href="/Products/show?id=<%= product.id %>" class="btn btn-primary btn-block">View Details</a>
-                            <button class="btn btn-outline-primary btn-block mt-2">Add to Cart</button>
+                            <%= button_to "Add to Cart", add_to_cart_path(product_id: product.id), method: :post, remote: true, class: "btn btn-primary", form_class: "form-inline", params: { redirect_path: view_cart_path } %>
                         </div>
                     </div>
                 </div>
