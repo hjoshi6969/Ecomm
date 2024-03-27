@@ -37,4 +37,7 @@ end
   end
   order.save
 end
+
+Home.create(heading: 'About JSR', moto: 'We are a leading provider of high-quality electronic products.', message_one_heading: 'Our Mission', message_one: 'We aim to provide our customers with innovative and reliable electronic products at competitive prices.', message_two_heading: 'Our Vision', message_two: 'To be the preferred choice for electronic products by consistently delivering exceptional value and service to our customers.')
+
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
