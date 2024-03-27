@@ -28,11 +28,12 @@ Rails.application.routes.draw do
   get '/Categories/index', to:'categories#index'
   get '/Categories/list', to:'categories#list'
   get '/Search/result', to:'search#index'
+  get '/Contact', to:'home#show'
 
-    # post '/add_to_cart', to: 'cart#add_to_cart'
-    get '/view_cart', to: 'cart#view_cart'
-    delete '/remove_from_cart/:id', to: 'cart#remove_from_cart', as: 'remove_from_cart'
-    post '/add_to_cart', to: 'cart#add_to_cart', as: 'add_to_cart'
-    patch '/update_cart/:id', to: 'cart#update_cart', as: 'update_cart'
+  # post '/add_to_cart', to: 'cart#add_to_cart'
+  get '/view_cart', to: 'cart#view_cart'
+  delete '/remove_from_cart/:id', to: 'cart#remove_from_cart', as: 'remove_from_cart'
+  post '/add_to_cart', to: 'cart#add_to_cart', as: 'add_to_cart'
+  patch '/update_cart/:id', to: 'cart#update_cart', as: 'update_cart'
    
 end
