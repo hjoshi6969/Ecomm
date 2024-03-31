@@ -1,6 +1,6 @@
 ActiveAdmin.register Product do
   permit_params :name, :description, :price, :category_id
-
+  
   controller do
     def scoped_collection
       super.includes(:category) # Ensure category association is eager loaded to prevent N+1 queries

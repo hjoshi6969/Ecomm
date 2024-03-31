@@ -15,7 +15,12 @@
             <tr>
                 <% product = Product.find(product_id) %>
                 <td><%= product.name %></td>
-                <td><%= number_to_currency(product.price) %></td>
+                <% if product.sale %>
+                  <% discounted_price = product.price * 0.7 * quantity %> <!-- Deduct 30% for sale -->
+                  <td><%= number_to_currency(discounted_price) %></td>
+                <% else %>
+                  <td><%= number_to_currency(product.price * quantity) %></td>
+                <% end %>
                 <td>
                     <%= form_tag update_cart_path(product_id), method: :patch, class: "form-inline" do %>
                         <%= hidden_field_tag :product_id, product_id %>

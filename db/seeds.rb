@@ -1,21 +1,31 @@
 # db/seeds.rb
 require 'faker'
 
+Product.destroy_all
+User.destroy_all
+Order.destroy_all
+OrderItem.destroy_all
+Contact.destroy_all
+
 # Create categories
 5.times do
   Category.create(name: Faker::Commerce.department)
 end
-
+puts("c done")
 # Create products
 60.times do
-  Product.create(
+  p = Product.create(
     name: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,
     price: Faker::Commerce.price(range: 50..300.0, as_string: true),
-    category_id: Category.pluck(:id).sample
+    category_id: Category.pluck(:id).sample,
+    sale: [true, false].sample
   )
+  puts(p.name)
+  puts(p.sale)
 end
 
+puts("p done")
 # Create users
 5.times do
   User.create(
@@ -24,6 +34,7 @@ end
     password: 'password'
   )
 end
+puts("u done")
 
 # Create orders
 5.times do
@@ -37,7 +48,3 @@ end
   end
   order.save
 end
-
-Home.create(heading: 'About JSR', moto: 'We are a leading provider of high-quality electronic products.', message_one_heading: 'Our Mission', message_one: 'We aim to provide our customers with innovative and reliable electronic products at competitive prices.', message_two_heading: 'Our Vision', message_two: 'To be the preferred choice for electronic products by consistently delivering exceptional value and service to our customers.')
-
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

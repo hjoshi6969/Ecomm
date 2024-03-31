@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :customers
+  devise_for :users
   get 'cart/add_to_cart'
   get 'cart/remove_from_cart'
   get 'cart/update_cart'

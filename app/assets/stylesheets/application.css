@@ -16,3 +16,7 @@
 body{
     background: black;
 }
+.pagination {
+    display: flex !important;
+    flex-direction: column !important;
+}

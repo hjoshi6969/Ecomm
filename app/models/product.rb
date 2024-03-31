@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :category
-  has_many :order_items
+  has_many :order_items, dependent: :delete_all
   def self.ransackable_associations(auth_object = nil)
     ["category", "order_items"]
   end
