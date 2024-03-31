@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+  before_action :authenticate_customer!
   def add_to_cart
     session[:cart] ||= {}
     product_id = params[:product_id]
