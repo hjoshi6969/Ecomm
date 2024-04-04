@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'province/name'
+  get 'user/index'
   devise_for :customers
   devise_for :users
   get 'cart/add_to_cart'
@@ -30,12 +32,15 @@ Rails.application.routes.draw do
   get '/Categories/index', to:'categories#index'
   get '/Categories/list', to:'categories#list'
   get '/Search/result', to:'search#index'
+  get '/account', to:'user#index'
   get '/Contact', to:'home#show'
+  patch '/update', to: 'user#update', as: 'update'
+  get '/users/sign_out', to:'user#sign_out'
+  post '/purchase', to: 'invoice#index', as: 'purchase'
 
   # post '/add_to_cart', to: 'cart#add_to_cart'
   get '/view_cart', to: 'cart#view_cart'
   delete '/remove_from_cart/:id', to: 'cart#remove_from_cart', as: 'remove_from_cart'
   post '/add_to_cart', to: 'cart#add_to_cart', as: 'add_to_cart'
   patch '/update_cart/:id', to: 'cart#update_cart', as: 'update_cart'
-   
 end

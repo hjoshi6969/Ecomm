@@ -48,3 +48,30 @@ puts("u done")
   end
   order.save
 end
+
+# # Find each province record and update its tax rates
+# Province.all.each do |province|
+#   case province.name
+#   when "Alberta"
+#     province.update(gst: 5.0, pst: 0.0, hst: 0.0)
+#   when "British Columbia"
+#     province.update(gst: 5.0, pst: 7.0, hst: 0.0)
+#   when "Manitoba"
+#     province.update(gst: 5.0, pst: 7.0, hst: 0.0)
+#   when "New Brunswick"
+#     province.update(gst: 0.0, pst: 10.0, hst: 0.0)
+#   when "Newfoundland and Labrador"
+#     province.update(gst: 0.0, pst: 10.0, hst: 0.0)
+#   when "Nova Scotia"
+#     province.update(gst: 0.0, pst: 0.0, hst: 15.0)
+#   when "Ontario"
+#     province.update(gst: 0.0, pst: 0.0, hst: 13.0)
+#   when "Prince Edward Island"
+#     province.update(gst: 0.0, pst: 10.0, hst: 0.0)
+#   when "Quebec"
+#     province.update(gst: 5.0, pst: 9.975, hst: 0.0)
+#   when "Saskatchewan"
+#     province.update(gst: 5.0, pst: 6.0, hst: 0.0)
+#   # Add more cases for other provinces if needed
+#   end
+# end
