@@ -72,15 +72,34 @@
     </div>
   </div>
 </div>
-<h1>Orders</h1>
 
-<% count = 0 %>
-<% @orders.each do |order| %>
-  <div>
-    <h2>Sr: <%= count += 1 %></h2>
-    <p>Email: <%= order.email %></p>
-    <p>Address: <%= order.address %></p>
-  </div>
-  <hr>
-<% end %>
+<div class="container">
+  <h1>Orders</h1>
+  <% count = 0 %>
+  <% @orders.each do |order| %>
+    <div>
+      <h2>Sr: <%= count += 1 %></h2>
+      <p>Email: <%= order.email %></p>
+      <p>Address: <%= order.address %></p>
+      
+      <h3>Order Items:</h3>
+      <ul>
+        <% total_price = 0 %>
+        <% @order_items[order.id].each do |item| %>
+          <li><%= item[:product].name %> - Quantity: <%= item[:quantity] %> - <%= item[:product].price * item[:quantity]%></li> <% total_price += item[:product].price * item[:quantity] %>
+        <% end %>
+      </ul>
+      <div class="invoice-total">
+          <p><strong>Subtotal:</strong> <%= number_to_currency(total_price) %></p>
+          <p><strong>GST (<%= order.gst %>%) :</strong> <%= number_to_currency(total_price *  order.gst/100) %></p>
+          <p><strong>PST (<%= order.pst %>%):</strong> <%= number_to_currency(total_price *  order.pst/100 )%></p>
+          <p><strong>HST (<%=  order.hst %>%):</strong> <%= number_to_currency(total_price *  order.hst/100)%></p>
+          <hr>
+          <p><strong>Total:</strong> <%= number_to_currency(total_price + (total_price * order.gst/100) + (total_price * order.pst/100) + (total_price * order.hst/100)) %></p>
+      </div>
+    </div>
+    <hr>
+  <% end %>
 
+
+</div>

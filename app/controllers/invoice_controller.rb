@@ -13,11 +13,12 @@ class InvoiceController < ApplicationController
         cart_hash[product_id] = { quantity: quantity, price: price }
       end
   
+
       # Calculate taxes
       province = Province.find(Customer.find(current_customer.id).province_id)
-      gst = total_price * (province.gst / 100)
-      pst = total_price * (province.pst / 100)
-      hst = total_price * (province.hst / 100)
+      gst = province.gst
+      pst = province.pst
+      hst = province.hst
   
       # Calculate total price including taxes
       total_with_taxes = total_price + gst + pst + hst
@@ -35,6 +36,15 @@ class InvoiceController < ApplicationController
   
       # Save the order
       if order.save
+        session[:cart].each do |product_id, quantity|
+          items = OrderItem.new(
+              order_id: order.id,
+              product_id: product_id,
+              Quantity: quantity,
+          )
+
+          items.save
+        end
         session.delete(:cart)
         redirect_to '/account'
       else

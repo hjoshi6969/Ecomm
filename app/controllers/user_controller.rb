@@ -3,8 +3,22 @@ class UserController < ApplicationController
   def index
     @user = Customer.find(current_customer.id)
     @orders = Order.where(customer_id: current_customer.id)
-
+  
+    @order_items = {}
+    @orders.each do |order|
+      order_items = OrderItem.where(order_id: order.id)
+      items_with_quantity = []
+  
+      order_items.each do |order_item|
+        product = Product.find(order_item.product_id)
+        items_with_quantity << { product: product, quantity: order_item.Quantity }
+      end
+  
+      @order_items[order.id] = items_with_quantity
+    end
   end
+  
+  
   def update
     @customer = Customer.find(params[:id])
 
