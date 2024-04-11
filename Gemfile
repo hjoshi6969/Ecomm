@@ -8,6 +8,8 @@ gem 'kaminari'
 
 gem 'activeadmin'
 
+# gem 'active_storage', '~> 5.2'
+
 # Plus integrations with:
 gem 'devise'
 gem 'cancancan'
