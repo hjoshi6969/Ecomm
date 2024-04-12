@@ -6,4 +6,5 @@ class Customer < ApplicationRecord
 
   has_many :order
   has_one_attached :avatar
+  validates :email, presence: true, uniqueness: true
 end
