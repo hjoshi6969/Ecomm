@@ -7,7 +7,8 @@ gem 'bootstrap-rubygem'
 gem 'kaminari'
 
 gem 'activeadmin'
-
+gem "google-cloud-storage", "~> 1.11", require: false
+gem 'dotenv-rails', '~> 2.7'
 # gem 'active_storage', '~> 5.2'
 
 # Plus integrations with:
