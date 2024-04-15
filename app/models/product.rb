@@ -5,7 +5,7 @@ class Product < ApplicationRecord
 
   # Validations
   validates :name, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, numericality: { message: 'must be numeric' }
   validates :description, presence: true
 
   def self.ransackable_associations(auth_object = nil)
