@@ -6,4 +6,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
     has_secure_password
     has_many :orders, dependent: :delete_all
-  enddsa
+  end
