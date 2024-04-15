@@ -15,4 +15,3 @@ class Order < ApplicationRecord
     ["address", "created_at", "customer_id", "email", "gst", "hst", "id", "id_value", "order_item", "pst", "updated_at"]
   end
 end
-dsad
