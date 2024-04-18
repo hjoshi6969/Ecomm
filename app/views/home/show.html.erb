@@ -1,4 +1,21 @@
-<div class="jumbotron text-center">
-  <h1 class="display-4"><%= @contact.email %></h1>
-  <p class="lead"><%= @contact.phone %></p>
+<!-- app/views/emails/contact.html.erb -->
+
+<div class="container mt-5">
+  <h1 class="mb-4">Contact Us</h1>
+
+  <%= form_with url: send_path, method: :post, class: 'mb-4' do |form| %>
+    <div class="mb-3">
+      <%= form.label :subject, class: 'form-label' %>
+      <%= form.text_field :subject, class: 'form-control', required: true %>
+    </div>
+
+    <%= form.hidden_field :email, value: Customer.find(current_customer.id).email %>
+    
+    <div class="mb-3">
+      <%= form.label :message, class: 'form-label' %>
+      <%= form.text_area :message, class: 'form-control', rows: 5, required: true %>
+    </div>
+
+    <%= form.submit 'Send Message', class: 'btn btn-primary' %>
+  <% end %>
 </div>

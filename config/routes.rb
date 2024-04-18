@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'email/index'
+  get 'email/send'
   get 'province/name'
   get 'user/index'
   devise_for :customers
@@ -37,6 +39,7 @@ Rails.application.routes.draw do
   patch '/update', to: 'user#update', as: 'update'
   get '/users/sign_out', to:'user#sign_out'
   post '/purchase', to: 'invoice#index', as: 'purchase'
+  post '/send', to: 'email#send', as: 'send'
 
   # post '/add_to_cart', to: 'cart#add_to_cart'
   get '/view_cart', to: 'cart#view_cart'

@@ -30,6 +30,7 @@
       <a class="nav-item nav-link" href="/view_cart">Cart</a>
       <a class="nav-item nav-link" href="/Contact">Contact</a>
       <a class="nav-item nav-link" href="/account">Account</a>
+      <a class="nav-item nav-link" href="/account">Account</a>
       <% if customer_signed_in? %>
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %></li>
       <% end %>
